@@ -25,20 +25,12 @@ framework for establishing trustworthiness in qualitative research.
 
 Codebooks used in this analysis:
 
-### Ideological Scaling
+### Economic optimism (exercise)
 
 **Instructions:**
 
-> Read each text carefully. Place the text on a -5 to +5 scale
-    for the inclusive-exclusive ideological dimension.
-
-    INCLUSIVE language (-5): Emphasizes equal rights, diversity, pluralism,
-    and protection of minorities.
-
-    EXCLUSIVE language (+5): Emphasizes exclusion of groups, national homogeneity,
-    and restricting rights.
-
-    Score 0 = neutral or mixed rhetoric.
+> Rate how optimistic the speech is about the national economy
+    over the coming years. Use an integer from 0 (very pessimistic) to 5 (very optimistic).
 
 **Schema:**
 
@@ -48,11 +40,11 @@ Codebooks used in this analysis:
  @ required             : logi TRUE
  @ properties           :List of 2
  .. $ score      : <ellmer::TypeBasic>
- ..  ..@ description: chr "Ideological position (-5 = inclusive, +5 = exclusive)"
+ ..  ..@ description: chr "Economic optimism score 0--5"
  ..  ..@ required   : logi TRUE
  ..  ..@ type       : chr "integer"
  .. $ explanation: <ellmer::TypeBasic>
- ..  ..@ description: chr "Brief justification for the assigned score, referring to specific text elements"
+ ..  ..@ description: chr "Brief justification with concrete phrases from the text"
  ..  ..@ required   : logi TRUE
  ..  ..@ type       : chr "string"
  @ additional_properties: logi FALSE
@@ -62,48 +54,48 @@ Codebooks used in this analysis:
 
 Chronological record of all coding runs:
 
-### 1. run1_ideology
+### 1. ex2_initial_coding
 
 **Parent:** None (original run)
-**Timestamp:** 2026-04-23 16:58:26
+**Timestamp:** 2026-04-23 17:01:12
 **Model:** openai/gpt-4o-mini
-**Codebook:** Ideological Scaling
+**Codebook:** Economic optimism (exercise)
 **Units coded:** 5
 
 **Call:**
 
 ```{r eval=FALSE}
-qlm_code(x = inaugural_texts, codebook = ideology_codebook, model = "openai/gpt-4o-mini", 
-    name = "run1_ideology")
+qlm_code(x = my_texts, codebook = ex2_codebook, model = "openai/gpt-4o-mini", 
+    name = "ex2_initial_coding")
 ```
 
-### 2. run2_same_settings
+### 2. ex2_replicate_same_params
 
-**Parent:** run1_ideology
-**Timestamp:** 2026-04-23 16:59:30
+**Parent:** ex2_initial_coding
+**Timestamp:** 2026-04-23 17:01:16
 **Model:** openai/gpt-4o-mini
-**Codebook:** Ideological Scaling
+**Codebook:** Economic optimism (exercise)
 **Units coded:** 5
 
 **Call:**
 
 ```{r eval=FALSE}
-qlm_replicate(x = coded_run1, name = "run2_same_settings")
+qlm_replicate(x = ex2_run1, name = "ex2_replicate_same_params")
 ```
 
-### 3. run3_high_temp
+### 3. ex2_replicate_high_temperature
 
-**Parent:** run1_ideology
-**Timestamp:** 2026-04-23 16:51:54
+**Parent:** ex2_initial_coding
+**Timestamp:** 2026-04-23 17:01:21
 **Model:** openai/gpt-4o-mini
-**Codebook:** Ideological Scaling
+**Codebook:** Economic optimism (exercise)
 **Units coded:** 5
 
 **Call:**
 
 ```{r eval=FALSE}
-qlm_replicate(x = coded_run1, params = params(temperature = 0.9), 
-    name = "run3_high_temp")
+qlm_replicate(x = ex2_run1, params = params(temperature = 0.9), 
+    name = "ex2_replicate_high_temperature")
 ```
 
 ## Raw data and coded results
@@ -117,9 +109,9 @@ trail$runs$run_name$data
 # Coded results for a specific run
 ```
 
-**run1_ideology:** 5 units, 2 variables
-**run2_same_settings:** 5 units, 2 variables
-**run3_high_temp:** 5 units, 2 variables
+**ex2_initial_coding:** 5 units, 2 variables
+**ex2_replicate_same_params:** 5 units, 2 variables
+**ex2_replicate_high_temperature:** 5 units, 2 variables
 
 ## Replication
 
@@ -149,61 +141,61 @@ Configure API credentials for the models used:
 Load the saved trail to access codebooks, data, and metadata:
 
 ```r
-trail <- readRDS("ideology_analysis.rds")
+trail <- readRDS("exercise2_workflow.rds")
 ```
 
 ### Replication code
 
 The following code replicates each coding run using the stored parameters.
 
-#### Replicate: run1_ideology
+#### Replicate: ex2_initial_coding
 
 ```r
 # Get codebook from trail
-codebook_run1_ideology <- trail$runs$run1_ideology$codebook
+codebook_ex2_initial_coding <- trail$runs$ex2_initial_coding$codebook
 
 # Load your input data (same structure as original)
 # texts <- your_data$text_column
 
-coded_run1_ideology <- qlm_code(
+coded_ex2_initial_coding <- qlm_code(
   texts,
-  codebook_run1_ideology,
+  codebook_ex2_initial_coding,
   model = "openai/gpt-4o-mini",
-  name = "run1_ideology"
+  name = "ex2_initial_coding"
 )
 ```
 
-#### Replicate: run2_same_settings
+#### Replicate: ex2_replicate_same_params
 
 ```r
 # Get codebook from trail
-codebook_run2_same_settings <- trail$runs$run2_same_settings$codebook
+codebook_ex2_replicate_same_params <- trail$runs$ex2_replicate_same_params$codebook
 
 # Load your input data (same structure as original)
 # texts <- your_data$text_column
 
-coded_run2_same_settings <- qlm_code(
+coded_ex2_replicate_same_params <- qlm_code(
   texts,
-  codebook_run2_same_settings,
+  codebook_ex2_replicate_same_params,
   model = "openai/gpt-4o-mini",
-  name = "run2_same_settings"
+  name = "ex2_replicate_same_params"
 )
 ```
 
-#### Replicate: run3_high_temp
+#### Replicate: ex2_replicate_high_temperature
 
 ```r
 # Get codebook from trail
-codebook_run3_high_temp <- trail$runs$run3_high_temp$codebook
+codebook_ex2_replicate_high_temperature <- trail$runs$ex2_replicate_high_temperature$codebook
 
 # Load your input data (same structure as original)
 # texts <- your_data$text_column
 
-coded_run3_high_temp <- qlm_code(
+coded_ex2_replicate_high_temperature <- qlm_code(
   texts,
-  codebook_run3_high_temp,
+  codebook_ex2_replicate_high_temperature,
   model = "openai/gpt-4o-mini",
-  name = "run3_high_temp"
+  name = "ex2_replicate_high_temperature"
 )
 ```
 

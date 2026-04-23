@@ -516,6 +516,97 @@ Run the complete 5-step workflow on your own texts:
 4. Compare runs with `qlm_compare()`
 5. Generate an audit trail
 
+::: {.callout-note}
+## Using your own corpus
+
+Below, `my_texts` is set to `inaugural_texts` so the example runs out of the box. Replace it with **your** named character vector (`names()` = document IDs, values = full text). The chunks use `#| eval: false` so a full Quarto render does not repeat the whole API pipeline; remove that line on each chunk (or set `eval: true`) when you want to execute the exercise.
+:::
+
+### Step 1 — Codebook
+
+```{r}
+#| eval: false
+
+my_texts <- inaugural_texts
+# my_texts <- YOUR_NAMED_CHARACTER_VECTOR
+
+ex2_codebook <- qlm_codebook(
+  name = "Economic optimism (exercise)",
+  role = "You are a political scientist reading speeches.",
+  instructions = "Rate how optimistic the speech is about the national economy
+    over the coming years. Use an integer from 0 (very pessimistic) to 5 (very optimistic).",
+  schema = type_object(
+    score = type_integer("Economic optimism score 0--5"),
+    explanation = type_string("Brief justification with concrete phrases from the text")
+  )
+)
+```
+
+### Step 2 — Code with `qlm_code()`
+
+```{r}
+#| eval: false
+
+ex2_run1 <- qlm_code(
+  my_texts,
+  codebook = ex2_codebook,
+  model = "openai/gpt-4o-mini",
+  name = "ex2_initial_coding"
+)
+
+ex2_run1
+```
+
+### Step 3 — Replicate (at least two different settings)
+
+```{r}
+#| eval: false
+
+# Same settings (stochastic repeat)
+ex2_run2 <- qlm_replicate(ex2_run1, name = "ex2_replicate_same_params")
+
+# Different temperature
+ex2_run3 <- qlm_replicate(
+  ex2_run1,
+  params = params(temperature = 0.9),
+  name = "ex2_replicate_high_temperature"
+)
+
+ex2_run2
+ex2_run3
+```
+
+### Step 4 — Compare with `qlm_compare()`
+
+```{r}
+#| eval: false
+
+ex2_comparison <- qlm_compare(
+  ex2_run1,
+  ex2_run2,
+  ex2_run3,
+  by = "score",
+  level = "ordinal"
+)
+
+print(ex2_comparison)
+```
+
+### Step 5 — Audit trail with `qlm_trail()`
+
+```{r}
+#| eval: false
+
+qlm_trail(
+  ex2_run1,
+  ex2_run2,
+  ex2_run3,
+  path = "exercise2_workflow"
+)
+```
+
+This writes `exercise2_workflow.rds` and `exercise2_workflow.qmd` in the working directory (typically the folder that contains this `.qmd`).
+
 ------------------------------------------------------------------------
 
 # Resources
