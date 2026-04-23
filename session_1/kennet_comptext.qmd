@@ -37,4 +37,39 @@ LLM - Based:
 * Can explain reasoning
 
 
+### Existing Tools
+
+Nvivo, MAXQDA, QDAMiner
+
+
+ * Ellmer (Wickam)
+ * Ollamar (Lin & Safi, 2025)
+ * Rollama (Grubber & Wbber)
+
+
+Flexible lLM interfaces - But no qualitative methodology/ text analysis support. 
+
+Text analysis packages. 
+
+* Quanteda
+
+## Introducing quallmer
+
+* Works with texts, images, pdfs
+* Supports open-source
+* Bouilt on the ellmer
+.
+
+
+
+# Example..
+
+Maerz & Schneier (2020)
+
+* Corpus --> 4.740
+* fINDING: Autocratis leaders use more ilibieral langage.
+
+
+
+
 
