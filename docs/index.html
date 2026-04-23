@@ -37,6 +37,7 @@
   <link href="presentation_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="presentation_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
   <link href="presentation_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js-plugins@latest/chalkboard/style.css">
   <style type="text/css">
 
   .callout {
@@ -991,6 +992,7 @@ ARG · BOL · CHL · COL · ECU · MEX · PRY · PER · URY · VEN</p>
   <script src="presentation_files/libs/revealjs/plugin/search/search.js"></script>
   <script src="presentation_files/libs/revealjs/plugin/zoom/zoom.js"></script>
   <script src="presentation_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js-plugins@latest/chalkboard/plugin.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -1173,10 +1175,15 @@ ARG · BOL · CHL · COL · ECU · MEX · PRY · PER · URY · VEN</p>
             processClass: 'tex2jax_process'
           },
         },
+        chalkboard: {
+          boardmarkerWidth: 4,
+          chalkWidth: 7
+        },
 
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
+          RevealChalkboard,
           RevealMath,
           RevealNotes,
           RevealSearch,

@@ -17,3 +17,9 @@ Than et al. 2025 —\> Has been a shift from programming to an interfcace.
 -   Write the code
 
 -   Deal with the computational equipment.
+
+### Is this computational social science? 
+
+When non-computational researches use GenAI tools, what are the doing methodogically?
+
+**Visions of AI —\> Messeri and Crockett (2024).**
