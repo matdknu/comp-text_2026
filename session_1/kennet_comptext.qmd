@@ -1,0 +1,40 @@
+---
+title: "AI-powered Qualitative Analysis in R"
+author: "Kenneth Benoit"
+format: html
+editor: visual
+---
+
+## Introduction 
+
+* Understand basic of LLM - Based text analysis
+* Learn the core worjflow of the quallmer tool
+* Replicate a real research example
+* Start using qaullmer for your own projects
+* Know how to validate and document your analysis
+
+quantilab.github.io
+https://quallmer.github.io/quallmer/
+kenbenoit.net
+
+
+https://onlinelibrary.wiley.com/doi/10.1111/ajps.70050
+https://kenbenoit.net/pdfs/Measuring-issue-salience-for-political-parties-using-LLMs-WEP.pdf
+https://journals.sagepub.com/doi/full/10.1177/16094069251322346
+https://www.cambridge.org/core/journals/political-analysis/article/codebook-llms-evaluating-llms-as-measurement-tools-for-political-science-concepts/7B323A0E47F782F2698A0AE849EA00DE
+
+
+Naturalistic inquiry. 
+
+### From Bag Words to LLM
+
+Dictionary approach, sentiment --> dead. 
+
+LLM - Based: 
+
+* Zero shot classifcation
+* Context-aware
+* Can explain reasoning
+
+
+

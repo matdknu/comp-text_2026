@@ -438,16 +438,23 @@ intra-elite dynamics.
 state-dependent elites (β ≈ -0.069, p \< 0.001), indicating a decline in
 their relative participation compared to market-oriented elites.
 
-The baseline post-shock effect is small and only marginally significant,
-suggesting that shocks do not substantially alter the overall size of
-the elite.
+We treated political shocks as exogenous filters.
+
+While market-oriented elites served as our control group—showing
+resilience or slight gains—state-dependent lineages suffered a
+statistically significant and persistent decline of 6.9% in their share
+of power.
+
+This confirms that political ruptures in the region act as a 'clearing
+mechanism' that favors globalized, market-ready capital over traditional
+state-linked networks..
 
 ```{r}
 #| echo: false
 #| warning: false
 #| message: false
 did_tbl <- readr::read_csv("tables/table_1_did_main.csv", show_col_types = FALSE)
-knitr::kable(did_tbl, digits = 4)
+knitr::kable(did_tbl, digits = 3)
 ```
 
 ------------------------------------------------------------------------
@@ -469,15 +476,19 @@ Table 2 reveals strong cross-national heterogeneity. The decline is
 largest in Mexico (β ≈ -0.143), followed by Argentina (β ≈ -0.101), and
 substantially smaller in Chile (β ≈ -0.028).
 
-This pattern is consistent with distinct regime dynamics: rupture in
-Mexico, recomposition in Argentina, and continuity in Chile.
+Our results prove that 'The Elite' is not a monolith. While **Mexico**
+experienced a structural rupture and **Argentina** a volatile
+recomposition, **Chile** stands as a case of extreme continuity. This
+heterogeneity suggests that political shocks only lead to real social
+change when they can break the underlying kinship networks that
+substitute for formal institutions.
 
 ```{r}
 #| echo: false
 #| warning: false
 #| message: false
 het_tbl <- readr::read_csv("tables/table_2_country_heterogeneity.csv", show_col_types = FALSE)
-knitr::kable(het_tbl, digits = 4)
+knitr::kable(het_tbl, digits = 3)
 ```
 
 ------------------------------------------------------------------------
