@@ -5,6 +5,7 @@ author: "Matías Deneken"
 date: "April 2026"
 format:
   revealjs:
+    output-file: index.html
     theme: [simple, custom.scss]
     fontsize: 28px
     slide-number: true

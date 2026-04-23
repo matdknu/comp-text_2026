@@ -37,7 +37,6 @@
   <link href="presentation_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="presentation_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
   <link href="presentation_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js-plugins@latest/chalkboard/style.css">
   <style type="text/css">
 
   .callout {
@@ -390,32 +389,32 @@ Email: <a href="mailto:m.deneken@uc.cl">m.deneken@uc.cl</a></p>
 <p>Latin American political history is often described in terms of oligarchies, elite continuity, and the intergenerational transmission of power. Yet, despite a rich historiographical tradition, we still lack systematic, comparable evidence on how elite families are actually connected across countries and over time.</p>
 <p>This paper addresses that gap by bringing a computational approach to the study of elites. Using large-scale biographical data from Spanish-language Wikipedia, we reconstruct kinship networks across multiple Latin American countries and analyze their structure using tools from network science.</p>
 </section>
-<section id="motivation-visual-collage" class="slide level2 montage-step-1">
-<h2>Motivation — Visual collage</h2>
+<section id="motivation-1" class="slide level2 montage-step-1">
+<h2>Motivation</h2>
 <div class="montage-frame">
 <p><img data-src="images/montar/1_deneken.jpg" class="montage-img montage-img-1"> <img data-src="images/montar/2_deneken.webp" class="montage-img montage-img-2"> <img data-src="images/montar/3_deneken.webp" class="montage-img montage-img-3"> <img data-src="images/montar/4_deneken.png" class="montage-img montage-img-4"> <img data-src="images/montar/5_gonzalez_larraín.jpg" class="montage-img montage-img-5"></p>
 </div>
 </section>
-<section id="motivation-visual-collage-1" class="slide level2 montage-step-2">
-<h2>Motivation — Visual collage</h2>
+<section id="motivation-2" class="slide level2 montage-step-2">
+<h2>Motivation</h2>
 <div class="montage-frame">
 <p><img data-src="images/montar/1_deneken.jpg" class="montage-img montage-img-1"> <img data-src="images/montar/2_deneken.webp" class="montage-img montage-img-2"> <img data-src="images/montar/3_deneken.webp" class="montage-img montage-img-3"> <img data-src="images/montar/4_deneken.png" class="montage-img montage-img-4"> <img data-src="images/montar/5_gonzalez_larraín.jpg" class="montage-img montage-img-5"></p>
 </div>
 </section>
-<section id="motivation-visual-collage-2" class="slide level2 montage-step-3">
-<h2>Motivation — Visual collage</h2>
+<section id="motivation-3" class="slide level2 montage-step-3">
+<h2>Motivation</h2>
 <div class="montage-frame">
 <p><img data-src="images/montar/1_deneken.jpg" class="montage-img montage-img-1"> <img data-src="images/montar/2_deneken.webp" class="montage-img montage-img-2"> <img data-src="images/montar/3_deneken.webp" class="montage-img montage-img-3"> <img data-src="images/montar/4_deneken.png" class="montage-img montage-img-4"> <img data-src="images/montar/5_gonzalez_larraín.jpg" class="montage-img montage-img-5"></p>
 </div>
 </section>
-<section id="motivation-visual-collage-3" class="slide level2 montage-step-4">
-<h2>Motivation — Visual collage</h2>
+<section id="motivation-4" class="slide level2 montage-step-4">
+<h2>Motivation</h2>
 <div class="montage-frame">
 <p><img data-src="images/montar/1_deneken.jpg" class="montage-img montage-img-1"> <img data-src="images/montar/2_deneken.webp" class="montage-img montage-img-2"> <img data-src="images/montar/3_deneken.webp" class="montage-img montage-img-3"> <img data-src="images/montar/4_deneken.png" class="montage-img montage-img-4"> <img data-src="images/montar/5_gonzalez_larraín.jpg" class="montage-img montage-img-5"></p>
 </div>
 </section>
-<section id="motivation-visual-collage-4" class="slide level2 montage-step-5">
-<h2>Motivation — Visual collage</h2>
+<section id="motivation-5" class="slide level2 montage-step-5">
+<h2>Motivation</h2>
 <div class="montage-frame">
 <p><img data-src="images/montar/1_deneken.jpg" class="montage-img montage-img-1"> <img data-src="images/montar/2_deneken.webp" class="montage-img montage-img-2"> <img data-src="images/montar/3_deneken.webp" class="montage-img montage-img-3"> <img data-src="images/montar/4_deneken.png" class="montage-img montage-img-4"> <img data-src="images/montar/5_gonzalez_larraín.jpg" class="montage-img montage-img-5"></p>
 </div>
@@ -484,11 +483,11 @@ ARG · BOL · CHL · COL · ECU · MEX · PRY · PER · URY · VEN</p>
 <section id="hypotheses-overview" class="slide level2">
 <h2>Hypotheses — overview</h2>
 <div class="hypotheses-overview-wrap">
-<table class="caption-top">
+<table class="caption-top" style="width:100%;">
 <colgroup>
-<col style="width: 6%">
-<col style="width: 48%">
-<col style="width: 45%">
+<col style="width: 26%">
+<col style="width: 38%">
+<col style="width: 35%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -790,7 +789,9 @@ ARG · BOL · CHL · COL · ECU · MEX · PRY · PER · URY · VEN</p>
 <section id="causal-results-did-and-event-study-1" class="slide level2">
 <h2>Causal Results: DiD and Event Study</h2>
 <p><strong>Table 1</strong> shows a significant negative effect of shocks on state-dependent elites (β ≈ -0.069, p &lt; 0.001), indicating a decline in their relative participation compared to market-oriented elites.</p>
-<p>The baseline post-shock effect is small and only marginally significant, suggesting that shocks do not substantially alter the overall size of the elite.</p>
+<p>We treated political shocks as exogenous filters.</p>
+<p>While market-oriented elites served as our control group—showing resilience or slight gains—state-dependent lineages suffered a statistically significant and persistent decline of 6.9% in their share of power.</p>
+<p>This confirms that political ruptures in the region act as a ‘clearing mechanism’ that favors globalized, market-ready capital over traditional state-linked networks..</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="caption-top">
@@ -819,22 +820,22 @@ ARG · BOL · CHL · COL · ECU · MEX · PRY · PER · URY · VEN</p>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">post_shock</td>
-<td style="text-align: right;">0.0154</td>
-<td style="text-align: right;">0.0081</td>
-<td style="text-align: right;">1.8940</td>
-<td style="text-align: right;">0.0694</td>
-<td style="text-align: right;">-0.0013</td>
-<td style="text-align: right;">0.0321</td>
+<td style="text-align: right;">0.015</td>
+<td style="text-align: right;">0.008</td>
+<td style="text-align: right;">1.894</td>
+<td style="text-align: right;">0.069</td>
+<td style="text-align: right;">-0.001</td>
+<td style="text-align: right;">0.032</td>
 <td style="text-align: left;">Post-shock effect for market-beneficiary baseline</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">post_shock:treated_state</td>
-<td style="text-align: right;">-0.0690</td>
-<td style="text-align: right;">0.0106</td>
-<td style="text-align: right;">-6.5148</td>
-<td style="text-align: right;">0.0000</td>
-<td style="text-align: right;">-0.0907</td>
-<td style="text-align: right;">-0.0472</td>
+<td style="text-align: right;">-0.069</td>
+<td style="text-align: right;">0.011</td>
+<td style="text-align: right;">-6.515</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">-0.091</td>
+<td style="text-align: right;">-0.047</td>
 <td style="text-align: left;">Additional post-shock effect for state-dependent vs market-beneficiary</td>
 </tr>
 </tbody>
@@ -850,7 +851,7 @@ ARG · BOL · CHL · COL · ECU · MEX · PRY · PER · URY · VEN</p>
 <section id="table-2-country-heterogeneity" class="slide level2">
 <h2>Table 2 — Country Heterogeneity</h2>
 <p>Table 2 reveals strong cross-national heterogeneity. The decline is largest in Mexico (β ≈ -0.143), followed by Argentina (β ≈ -0.101), and substantially smaller in Chile (β ≈ -0.028).</p>
-<p>This pattern is consistent with distinct regime dynamics: rupture in Mexico, recomposition in Argentina, and continuity in Chile.</p>
+<p>Our results prove that ‘The Elite’ is not a monolith. While <strong>Mexico</strong> experienced a structural rupture and <strong>Argentina</strong> a volatile recomposition, <strong>Chile</strong> stands as a case of extreme continuity. This heterogeneity suggests that political shocks only lead to real social change when they can break the underlying kinship networks that substitute for formal institutions.</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="caption-top">
@@ -880,52 +881,52 @@ ARG · BOL · CHL · COL · ECU · MEX · PRY · PER · URY · VEN</p>
 <tr class="odd">
 <td style="text-align: left;">Argentina</td>
 <td style="text-align: left;">post_shock</td>
-<td style="text-align: right;">0.0329</td>
-<td style="text-align: right;">0.0212</td>
-<td style="text-align: right;">1.5539</td>
-<td style="text-align: right;">0.1588</td>
-<td style="text-align: right;">-0.0159</td>
-<td style="text-align: right;">0.0818</td>
+<td style="text-align: right;">0.033</td>
+<td style="text-align: right;">0.021</td>
+<td style="text-align: right;">1.554</td>
+<td style="text-align: right;">0.159</td>
+<td style="text-align: right;">-0.016</td>
+<td style="text-align: right;">0.082</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Argentina</td>
 <td style="text-align: left;">post_shock:treated_state</td>
-<td style="text-align: right;">-0.1009</td>
-<td style="text-align: right;">0.0190</td>
-<td style="text-align: right;">-5.3133</td>
-<td style="text-align: right;">0.0007</td>
-<td style="text-align: right;">-0.1447</td>
-<td style="text-align: right;">-0.0571</td>
+<td style="text-align: right;">-0.101</td>
+<td style="text-align: right;">0.019</td>
+<td style="text-align: right;">-5.313</td>
+<td style="text-align: right;">0.001</td>
+<td style="text-align: right;">-0.145</td>
+<td style="text-align: right;">-0.057</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Chile</td>
 <td style="text-align: left;">post_shock:treated_state</td>
-<td style="text-align: right;">-0.0275</td>
-<td style="text-align: right;">0.0105</td>
-<td style="text-align: right;">-2.6331</td>
-<td style="text-align: right;">0.0272</td>
-<td style="text-align: right;">-0.0512</td>
-<td style="text-align: right;">-0.0039</td>
+<td style="text-align: right;">-0.028</td>
+<td style="text-align: right;">0.011</td>
+<td style="text-align: right;">-2.633</td>
+<td style="text-align: right;">0.027</td>
+<td style="text-align: right;">-0.051</td>
+<td style="text-align: right;">-0.004</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Mexico</td>
 <td style="text-align: left;">post_shock</td>
-<td style="text-align: right;">0.0259</td>
-<td style="text-align: right;">0.0116</td>
-<td style="text-align: right;">2.2403</td>
-<td style="text-align: right;">0.0601</td>
-<td style="text-align: right;">-0.0014</td>
-<td style="text-align: right;">0.0532</td>
+<td style="text-align: right;">0.026</td>
+<td style="text-align: right;">0.012</td>
+<td style="text-align: right;">2.240</td>
+<td style="text-align: right;">0.060</td>
+<td style="text-align: right;">-0.001</td>
+<td style="text-align: right;">0.053</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Mexico</td>
 <td style="text-align: left;">post_shock:treated_state</td>
-<td style="text-align: right;">-0.1432</td>
-<td style="text-align: right;">0.0157</td>
-<td style="text-align: right;">-9.1306</td>
-<td style="text-align: right;">0.0000</td>
-<td style="text-align: right;">-0.1803</td>
-<td style="text-align: right;">-0.1061</td>
+<td style="text-align: right;">-0.143</td>
+<td style="text-align: right;">0.016</td>
+<td style="text-align: right;">-9.131</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">-0.180</td>
+<td style="text-align: right;">-0.106</td>
 </tr>
 </tbody>
 </table>
@@ -1035,7 +1036,6 @@ ARG · BOL · CHL · COL · ECU · MEX · PRY · PER · URY · VEN</p>
   <script src="presentation_files/libs/revealjs/plugin/search/search.js"></script>
   <script src="presentation_files/libs/revealjs/plugin/zoom/zoom.js"></script>
   <script src="presentation_files/libs/revealjs/plugin/math/math.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js-plugins@latest/chalkboard/plugin.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -1218,15 +1218,10 @@ ARG · BOL · CHL · COL · ECU · MEX · PRY · PER · URY · VEN</p>
             processClass: 'tex2jax_process'
           },
         },
-        chalkboard: {
-          boardmarkerWidth: 4,
-          chalkWidth: 7
-        },
 
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
-          RevealChalkboard,
           RevealMath,
           RevealNotes,
           RevealSearch,
