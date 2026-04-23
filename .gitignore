@@ -5,3 +5,7 @@
 
 # Local OpenAI key (one line); used by session_kennet/quallmer_tutorial.qmd
 session_kennet/API
+
+# Outputs from session_kennet/ejemplo.qmd (RDS, qlm_trail)
+session_kennet/ejemplo_output/
+notes.docx

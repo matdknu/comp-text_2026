@@ -60,7 +60,7 @@ tools from network science.
 ![](images/montar/5_gonzalez_larraín.jpg){.montage-img .montage-img-5}
 :::
 
-## Motivation  {.montage-step-2}
+## Motivation {.montage-step-2}
 
 ::: montage-frame
 ![](images/montar/1_deneken.jpg){.montage-img .montage-img-1}
@@ -80,7 +80,7 @@ tools from network science.
 ![](images/montar/5_gonzalez_larraín.jpg){.montage-img .montage-img-5}
 :::
 
-## Motivation  {.montage-step-4}
+## Motivation {.montage-step-4}
 
 ::: montage-frame
 ![](images/montar/1_deneken.jpg){.montage-img .montage-img-1}
@@ -90,7 +90,7 @@ tools from network science.
 ![](images/montar/5_gonzalez_larraín.jpg){.montage-img .montage-img-5}
 :::
 
-## Motivation  {.montage-step-5}
+## Motivation {.montage-step-5}
 
 ::: montage-frame
 ![](images/montar/1_deneken.jpg){.montage-img .montage-img-1}
@@ -203,7 +203,7 @@ ARG · BOL · CHL · COL · ECU · MEX · PRY · PER · URY · VEN
 
 ::: hypotheses-overview-wrap
 | **Hyp.** | Core claim                                                                    | Mechanism                                                                |
-|------------------|----------------------------|--------------------------|
+|----------|-------------------------------------------------------------------------------|--------------------------------------------------------------------------|
 | **H1**   | Elite persistence is **mediated by social closure** (endogamy).               | Marriage market as a **defensive buffer** against political turnover.    |
 | **H2**   | Elite survival depends on **multidimensional interconnectivity**.             | **Endogamy + transnational ties** jointly buffer shocks.                 |
 | **H3**   | Networks shift from **expansive alliances** to **self-referential clusters**. | Intensive kinship substitutes for **weak state institutions** over time. |

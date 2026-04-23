@@ -1,0 +1,285 @@
+---
+title: "Ejemplo: iliberalismo en discursos políticos"
+subtitle: "Código tomado del ejemplo oficial de quallmer (Maerz & Schneider 2020)"
+date: today
+format:
+  html:
+    toc: true
+    toc-depth: 2
+params:
+  # Discursos a codificar con la API (máx. 100 en la muestra del paquete). Sube a 100 para usar toda la muestra.
+  n_speeches: 40
+---
+
+Basado en la viñeta [**Example: Illiberalism in political speeches**](https://quallmer.github.io/quallmer/articles/pkgdown/examples/example_illiberalism.html). El artículo original usa 4.740 discursos desde un `.rds`; aquí usamos la muestra incluida en **quallmer** (`data_corpus_ms2020sample`, 100 discursos) y el índice de diccionario ya viene en `score`.
+
+Maerz, S. F., & Schneider, C. Q. (2020). *Quality & Quantity*, 54, 517--545. <https://doi.org/10.1007/s11135-019-00885-7>
+
+```{r}
+#| echo: false
+#| message: false
+api_candidates <- c(
+  {
+    inp <- tryCatch(knitr::current_input(warn = FALSE), error = function(e) NA_character_)
+    if (is.na(inp) || !nzchar(inp)) {
+      if (requireNamespace("rstudioapi", quietly = TRUE) && rstudioapi::isAvailable()) {
+        inp <- tryCatch(rstudioapi::documentPath(), error = function(e) NA_character_)
+      }
+    }
+    if (!is.na(inp) && nzchar(inp)) {
+      file.path(dirname(normalizePath(inp, winslash = "/", mustWork = FALSE)), "API")
+    } else NA_character_
+  },
+  file.path(getwd(), "API"),
+  {
+    qd <- Sys.getenv("QUARTO_PROJECT_DIR", "")
+    if (nzchar(qd)) file.path(qd, "session_kennet", "API") else NA_character_
+  }
+)
+api_candidates <- api_candidates[!is.na(api_candidates) & nzchar(api_candidates)]
+api_file <- api_candidates[vapply(api_candidates, file.exists, logical(1L))][1]
+if (is.na(api_file) || !nzchar(api_file)) {
+  stop("Falta el archivo `API` (una línea con la clave) junto a este .qmd o en session_kennet/.", call. = FALSE)
+}
+key <- trimws(readLines(api_file, n = 1L, warn = FALSE))
+if (!nzchar(key)) stop("El archivo API está vacío.", call. = FALSE)
+Sys.setenv(OPENAI_API_KEY = key)
+```
+
+## Paquetes y datos
+
+```{r}
+#| message: false
+#| warning: false
+library(quallmer)
+library(quanteda)
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+
+dir.create("ejemplo_output", showWarnings = FALSE, recursive = TRUE)
+
+data_speeches_ms2020 <-
+  quallmer::data_corpus_ms2020sample |>
+  quanteda::convert(to = "data.frame") |>
+  dplyr::rename(.id = doc_id) |>
+  dplyr::mutate(.id = as.character(.id))
+
+work <- dplyr::slice_head(data_speeches_ms2020, n = min(params$n_speeches, nrow(data_speeches_ms2020)))
+
+dim(work)
+work |>
+  dplyr::count(speaker, regime) |>
+  dplyr::arrange(dplyr::desc(n)) |>
+  dplyr::slice_head(n = 10)
+```
+
+## Codebook (liberal--iliberal)
+
+```{r}
+codebook_ideology <- qlm_codebook(
+  name = "Liberal-illiberal rhetoric",
+  instructions = paste(
+    "Analyze the rhetorical style of this political speech.",
+    "",
+    "ILLIBERAL rhetoric (negative scores) includes:",
+    "- Nationalism and patriotic appeals",
+    "- Paternalism and appeals to tradition",
+    "- Emphasis on order, stability, and security",
+    "- In-group/out-group distinctions",
+    "- Rejection of pluralism",
+    "",
+    "LIBERAL rhetoric (positive scores) includes:",
+    "- Individual rights and freedoms",
+    "- Tolerance and pluralism",
+    "- Civil liberties and minority rights",
+    "- Democratic values and rule of law",
+    "- Open society principles",
+    "",
+    "A score of 0 indicates neutral or mixed rhetoric."
+  ),
+  schema = ellmer::type_object(
+    score = ellmer::type_integer(
+      description = "Rhetoric score from -10 (illiberal) to +10 (liberal)"
+    ),
+    explanation = ellmer::type_string(
+      description = "Brief explanation of the assigned score"
+    )
+  ),
+  role = "You are an expert political scientist analyzing political rhetoric.",
+  input_type = "text"
+)
+
+codebook_ideology
+```
+
+## Codificación con el LLM
+
+```{r}
+speech_texts <- work$text
+names(speech_texts) <- work$.id
+
+coded_speeches <- qlm_code(
+  speech_texts,
+  codebook = codebook_ideology,
+  model = "openai/gpt-4o-mini",
+  name = "gpt4o_mini_ideology",
+  notes = sprintf(
+    "LLM coding of %d speeches (subset of data_corpus_ms2020sample) for liberal-illiberal rhetoric",
+    length(speech_texts)
+  )
+)
+
+saveRDS(coded_speeches, file.path("ejemplo_output", "coded_ideology_gpt4o.rds"))
+```
+
+### Muestra aleatoria de discursos codificados
+
+```{r}
+set.seed(42)
+sample_ids <- sample(work$.id, size = min(10L, length(work$.id)))
+
+work |>
+  dplyr::filter(.id %in% sample_ids) |>
+  dplyr::select(.id, speaker, country, regime) |>
+  dplyr::left_join(
+    as.data.frame(coded_speeches) |> dplyr::select(.id, llm_score = score, explanation),
+    by = ".id"
+  ) |>
+  knitr::kable(
+    col.names = c("ID", "Speaker", "Country", "Regime", "Score", "Explanation"),
+    caption = "Random sample of coded speeches"
+  )
+```
+
+## Agregación a nivel de orador
+
+```{r}
+coded_with_meta <- work |>
+  dplyr::select(.id, speaker, country, regime, dictionary_score = score) |>
+  dplyr::left_join(
+    as.data.frame(coded_speeches) |> dplyr::select(.id, llm_score = score),
+    by = ".id"
+  )
+
+speaker_scores <- coded_with_meta |>
+  dplyr::group_by(speaker, country, regime) |>
+  dplyr::summarise(
+    n_speeches = dplyr::n(),
+    dictionary_score = mean(dictionary_score),
+    llm_score = mean(llm_score, na.rm = TRUE),
+    .groups = "drop"
+  ) |>
+  dplyr::mutate(
+    dictionary_z = as.numeric(scale(dictionary_score)[, 1]),
+    llm_z = as.numeric(scale(llm_score)[, 1])
+  ) |>
+  dplyr::arrange(dictionary_score)
+
+dplyr::glimpse(speaker_scores)
+```
+
+## Comparación diccionario vs. LLM (`qlm_compare`)
+
+```{r}
+dictionary_coded <- as_qlm_coded(
+  speaker_scores |> dplyr::select(.id = speaker, score = dictionary_z),
+  name = "dictionary_ms2020"
+)
+
+llm_coded <- as_qlm_coded(
+  speaker_scores |> dplyr::select(.id = speaker, score = llm_z),
+  name = "gpt4o_mini_aggregated"
+)
+
+comparison <- qlm_compare(
+  dictionary_coded,
+  llm_coded,
+  by = "score",
+  level = "interval",
+  tolerance = 1
+)
+
+comparison
+```
+
+## Figura tipo artículo (z-scores)
+
+```{r}
+plot_data <- speaker_scores |>
+  tidyr::pivot_longer(
+    cols = c(dictionary_z, llm_z),
+    names_to = "method",
+    values_to = "score"
+  ) |>
+  dplyr::mutate(
+    method = dplyr::case_when(
+      method == "dictionary_z" ~ "Dictionary (original)",
+      method == "llm_z" ~ "LLM (GPT-4o-mini)"
+    )
+  )
+
+ggplot(plot_data, aes(x = reorder(speaker, score), y = score, color = regime, shape = method)) +
+  geom_line(aes(group = speaker), linewidth = 0.3, alpha = 0.5) +
+  geom_point(size = 3, alpha = 0.8) +
+  geom_hline(yintercept = 0, linetype = "dashed", alpha = 0.5) +
+  scale_color_manual(
+    name = "Regime type",
+    values = c("Autocracy" = "#FF3300", "Democracy" = "#00CC00")
+  ) +
+  scale_shape_manual(
+    name = "Method",
+    values = c("Dictionary (original)" = 16, "LLM (GPT-4o-mini)" = 17)
+  ) +
+  labs(
+    x = NULL,
+    y = "Illiberal vs liberal rhetoric (z-score)",
+    title = "Ideology scores by speaker: Dictionary vs. LLM",
+    subtitle = "Both scores standardized to z-scores for comparison"
+  ) +
+  coord_flip() +
+  theme_minimal() +
+  theme(
+    legend.position = "bottom",
+    legend.box = "vertical",
+    panel.grid.major.y = element_blank()
+  )
+```
+
+Las clasificaciones de régimen provienen de los metadatos de la muestra (V-Dem en el artículo original).
+
+## Dispersión diccionario vs. LLM
+
+```{r}
+ggplot(speaker_scores, aes(x = dictionary_z, y = llm_z, color = regime)) +
+  geom_point(size = 4, alpha = 0.8) +
+  geom_smooth(method = "lm", se = TRUE, color = "gray40", linetype = "dashed") +
+  geom_abline(slope = 1, intercept = 0, linetype = "dotted", alpha = 0.5) +
+  scale_color_manual(
+    name = "Regime type",
+    values = c("Autocracy" = "#FF3300", "Democracy" = "#00CC00")
+  ) +
+  labs(
+    x = "Dictionary score (z-score)",
+    y = "LLM score (z-score)",
+    title = "Dictionary vs. LLM ideology scores",
+    subtitle = "Both standardized; dotted = perfect agreement; dashed = linear fit"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+```
+
+## Pista de auditoría (`qlm_trail`)
+
+```{r}
+qlm_trail(coded_speeches, path = file.path("ejemplo_output", "ideology_replication"))
+```
+
+Genera `ejemplo_output/ideology_replication.rds` y `ejemplo_output/ideology_replication.qmd`.
+
+## Conclusión (como en la viñeta)
+
+1. Resultados comparables entre diccionario y LLM (correlación / acuerdo).
+2. El LLM capta matices retóricos que el diccionario no cuenta palabra a palabra.
+3. Las explicaciones del modelo ayudan a interpretar y auditar.
+4. El diccionario sigue siendo transparente; el LLM puede documentarse con `qlm_trail()`.
