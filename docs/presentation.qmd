@@ -153,7 +153,7 @@ ARG · BOL · CHL · COL · ECU · MEX · PRY · PER · URY · VEN
 
 ::: hypotheses-overview-wrap
 | **Hyp.** | Core claim                                                                    | Mechanism                                                                |
-|-----------------|----------------------------|---------------------------|
+|------------------|----------------------------|---------------------------|
 | **H1**   | Elite persistence is **mediated by social closure** (endogamy).               | Marriage market as a **defensive buffer** against political turnover.    |
 | **H2**   | Elite survival depends on **multidimensional interconnectivity**.             | **Endogamy + transnational ties** jointly buffer shocks.                 |
 | **H3**   | Networks shift from **expansive alliances** to **self-referential clusters**. | Intensive kinship substitutes for **weak state institutions** over time. |
@@ -522,9 +522,20 @@ the documentary record.
 -   Open-access release for teaching and replication
 :::
 
-------------------------------------------------------------------------
+## Next step (for me 🔜)
 
-## Next step (for me 🔜 )
+-   **LLM-Powered Data Classification:** \* Leverage Large Language
+    Models (LLMs) to refine and automate JSON structuring.
+
+    -   Improve data categorization accuracy for complex socio-technical
+        datasets.
+
+-   **PhD Research: CSS in Latin America:**
+
+    -   Develop a comprehensive overview of the current state of
+        **Computational Social Science (CSS)** in the region.
+
+------------------------------------------------------------------------
 
 ##  {#thank-you-slide}
 
@@ -537,7 +548,7 @@ the documentary record.
 
 **Matías Deneken**
 
-*Methodolab*
+Upcoming, London School of Economics
 
 [m.deneken\@uc.cl](mailto:m.deneken@uc.cl){.email-link}
 
