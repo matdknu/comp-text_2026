@@ -4,9 +4,7 @@ format: html
 editor: visual
 ---
 
-## ...
-
-Key speaker: Paulina García - Corral
+*Key speaker*: Paulina García - Corral
 
 Than et al. 2025 —\> Has been a shift from programming to an interfcace.
 
