@@ -203,7 +203,7 @@ ARG · BOL · CHL · COL · ECU · MEX · PRY · PER · URY · VEN
 
 ::: hypotheses-overview-wrap
 | **Hyp.** | Core claim                                                                    | Mechanism                                                                |
-|----------|-------------------------------------------------------------------------------|--------------------------------------------------------------------------|
+|-------------------|----------------------------|--------------------------|
 | **H1**   | Elite persistence is **mediated by social closure** (endogamy).               | Marriage market as a **defensive buffer** against political turnover.    |
 | **H2**   | Elite survival depends on **multidimensional interconnectivity**.             | **Endogamy + transnational ties** jointly buffer shocks.                 |
 | **H3**   | Networks shift from **expansive alliances** to **self-referential clusters**. | Intensive kinship substitutes for **weak state institutions** over time. |
