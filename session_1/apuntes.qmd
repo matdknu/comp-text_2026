@@ -32,4 +32,37 @@ Paper: Horta Reibeiro, 2026,
 
 New paradigm: There's no real inherent interest in becoming.a computational scholar (Chatzichristo, 2025)
 
+Jowsey 2025.
+
 Nicmanis and Spurrier 2025.
+
+What do we mean when we say GenAI, LLM , promp, parameters..?
+
+How can our expertise be best leveraged to help or colleagues?
+
+------
+
+1.  Intuition –\> Understand what LLMs do and why they heave as they do
+2.  Interaction –\> Learn how to work with LLMs beyond chat and copy-past
+3.  Evaluation —\> Critically asses outputs.
+4.  Documentation –\> make the process transparent and reproducible
+
+**Should qualitative researches be able to:**
+
+-   Program
+
+-   Explain what a transformer is ?
+
+-   Explain LLMs in simple, funcional terms?
+
+-   Use structured prompts instead of copy and paste from chat bot interfaces?
+
+-   Identify common failur modes (bias, hallucination, flattening)?
+
+Incorporación de lo cuali a lo cuantitativo:
+
+-   Abramson et al. 2025..
+
+**Sociology of computation**
+
+<https://lmstudio.ai/>
