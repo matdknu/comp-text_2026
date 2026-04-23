@@ -644,3 +644,87 @@ body {
   margin-top: 0.2em !important;
 }
 
+/* Progressive image collage after Motivation */
+.reveal .slides section[class*="montage-step-"] h2 {
+  margin-bottom: 0.28em !important;
+}
+
+.reveal .montage-frame {
+  position: relative;
+  width: min(92%, 980px);
+  height: 78%;
+  margin: 0.4em auto 0;
+}
+
+.reveal .montage-frame p {
+  margin: 0;
+}
+
+.reveal .montage-img {
+  position: absolute;
+  border: 1px solid #d8deef;
+  border-radius: 8px;
+  box-shadow: 0 10px 26px rgba(17, 33, 64, 0.18);
+  object-fit: cover;
+  background: #fff;
+  opacity: 0;
+  transition: opacity 220ms ease-in-out;
+}
+
+.reveal .montage-img-1 {
+  left: 8%;
+  top: 9%;
+  width: 40%;
+  transform: rotate(-4deg);
+}
+
+.reveal .montage-img-2 {
+  right: 7%;
+  top: 7%;
+  width: 42%;
+  transform: rotate(3deg);
+}
+
+.reveal .montage-img-3 {
+  left: 18%;
+  top: 32%;
+  width: 36%;
+  transform: rotate(-2deg);
+}
+
+.reveal .montage-img-4 {
+  right: 16%;
+  top: 33%;
+  width: 37%;
+  transform: rotate(4deg);
+}
+
+.reveal .montage-img-5 {
+  left: 30%;
+  top: 44%;
+  width: 50%;
+  transform: rotate(-1deg);
+  z-index: 9;
+  box-shadow: 0 14px 34px rgba(10, 22, 46, 0.34);
+}
+
+.reveal .montage-step-1 .montage-img-1 { opacity: 0.86; }
+.reveal .montage-step-2 .montage-img-1,
+.reveal .montage-step-2 .montage-img-2 { opacity: 0.74; }
+.reveal .montage-step-3 .montage-img-1,
+.reveal .montage-step-3 .montage-img-2,
+.reveal .montage-step-3 .montage-img-3 { opacity: 0.66; }
+.reveal .montage-step-4 .montage-img-1,
+.reveal .montage-step-4 .montage-img-2,
+.reveal .montage-step-4 .montage-img-3,
+.reveal .montage-step-4 .montage-img-4 { opacity: 0.58; }
+.reveal .montage-step-5 .montage-img-1,
+.reveal .montage-step-5 .montage-img-2,
+.reveal .montage-step-5 .montage-img-3,
+.reveal .montage-step-5 .montage-img-4,
+.reveal .montage-step-5 .montage-img-1,
+.reveal .montage-step-5 .montage-img-2,
+.reveal .montage-step-5 .montage-img-3,
+.reveal .montage-step-5 .montage-img-4 { opacity: 0.28; }
+.reveal .montage-step-5 .montage-img-5 { opacity: 0.95; }
+

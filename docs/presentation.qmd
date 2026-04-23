@@ -50,6 +50,56 @@ Spanish-language Wikipedia, we reconstruct kinship networks across
 multiple Latin American countries and analyze their structure using
 tools from network science.
 
+## Motivation {.montage-step-1}
+
+::: montage-frame
+![](images/montar/1_deneken.jpg){.montage-img .montage-img-1}
+![](images/montar/2_deneken.webp){.montage-img .montage-img-2}
+![](images/montar/3_deneken.webp){.montage-img .montage-img-3}
+![](images/montar/4_deneken.png){.montage-img .montage-img-4}
+![](images/montar/5_gonzalez_larraín.jpg){.montage-img .montage-img-5}
+:::
+
+## Motivation  {.montage-step-2}
+
+::: montage-frame
+![](images/montar/1_deneken.jpg){.montage-img .montage-img-1}
+![](images/montar/2_deneken.webp){.montage-img .montage-img-2}
+![](images/montar/3_deneken.webp){.montage-img .montage-img-3}
+![](images/montar/4_deneken.png){.montage-img .montage-img-4}
+![](images/montar/5_gonzalez_larraín.jpg){.montage-img .montage-img-5}
+:::
+
+## Motivation {.montage-step-3}
+
+::: montage-frame
+![](images/montar/1_deneken.jpg){.montage-img .montage-img-1}
+![](images/montar/2_deneken.webp){.montage-img .montage-img-2}
+![](images/montar/3_deneken.webp){.montage-img .montage-img-3}
+![](images/montar/4_deneken.png){.montage-img .montage-img-4}
+![](images/montar/5_gonzalez_larraín.jpg){.montage-img .montage-img-5}
+:::
+
+## Motivation  {.montage-step-4}
+
+::: montage-frame
+![](images/montar/1_deneken.jpg){.montage-img .montage-img-1}
+![](images/montar/2_deneken.webp){.montage-img .montage-img-2}
+![](images/montar/3_deneken.webp){.montage-img .montage-img-3}
+![](images/montar/4_deneken.png){.montage-img .montage-img-4}
+![](images/montar/5_gonzalez_larraín.jpg){.montage-img .montage-img-5}
+:::
+
+## Motivation  {.montage-step-5}
+
+::: montage-frame
+![](images/montar/1_deneken.jpg){.montage-img .montage-img-1}
+![](images/montar/2_deneken.webp){.montage-img .montage-img-2}
+![](images/montar/3_deneken.webp){.montage-img .montage-img-3}
+![](images/montar/4_deneken.png){.montage-img .montage-img-4}
+![](images/montar/5_gonzalez_larraín.jpg){.montage-img .montage-img-5}
+:::
+
 ------------------------------------------------------------------------
 
 ## Main Research Question {.question-slide}
@@ -153,7 +203,7 @@ ARG · BOL · CHL · COL · ECU · MEX · PRY · PER · URY · VEN
 
 ::: hypotheses-overview-wrap
 | **Hyp.** | Core claim                                                                    | Mechanism                                                                |
-|------------------|----------------------------|---------------------------|
+|------------------|----------------------------|--------------------------|
 | **H1**   | Elite persistence is **mediated by social closure** (endogamy).               | Marriage market as a **defensive buffer** against political turnover.    |
 | **H2**   | Elite survival depends on **multidimensional interconnectivity**.             | **Endogamy + transnational ties** jointly buffer shocks.                 |
 | **H3**   | Networks shift from **expansive alliances** to **self-referential clusters**. | Intensive kinship substitutes for **weak state institutions** over time. |
