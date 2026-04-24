@@ -388,6 +388,10 @@ Email: <a href="mailto:m.deneken@uc.cl">m.deneken@uc.cl</a></p>
 <h2>Motivation</h2>
 <p>Latin American political history is often described in terms of oligarchies, elite continuity, and the intergenerational transmission of power. Yet, despite a rich historiographical tradition, we still lack systematic, comparable evidence on how elite families are actually connected across countries and over time.</p>
 <p>This paper addresses that gap by bringing a computational approach to the study of elites. Using large-scale biographical data from Spanish-language Wikipedia, we reconstruct kinship networks across multiple Latin American countries and analyze their structure using tools from network science.</p>
+
+<img data-src="image/brazilia.jpg" class="quarto-figure quarto-figure-center r-stretch" style="width:62.0%"><div style="text-align:center; font-size:0.75em; color:#60748e; margin-top:0.4em;">
+<p>Construction of Brasilia</p>
+</div>
 </section>
 <section id="motivation-1" class="slide level2 montage-step-1">
 <h2>Motivation</h2>
@@ -472,6 +476,39 @@ ARG · BOL · CHL · COL · ECU · MEX · PRY · PER · URY · VEN</p>
 </div></div>
 </div>
 </section>
+<section id="methodology-two-stage-nlp-pipeline" class="slide level2">
+<h2>Methodology: Two-Stage NLP Pipeline</h2>
+<div class="pipeline-stages">
+<div class="stage-card">
+<div class="stage-badge">
+<p>Stage 1</p>
+</div>
+<h4 id="rule-based-extraction">Rule-based Extraction</h4>
+<p>Classical NLP over Spanish-language Wikipedia: rate-limited scraping, regex parsing of infobox fields, and Unicode normalization.</p>
+<div class="stage-methods">
+<p><code>rvest</code> · regex · infobox schema · <code>familia_norm</code></p>
+</div>
+<p><em>Prioritizes precision over recall.</em></p>
+</div>
+<div class="stage-arrow">
+<p>→</p>
+</div>
+<div class="stage-card stage-card-highlight">
+<div class="stage-badge">
+<p>Stage 2</p>
+</div>
+<h4 id="relational-resolution">Relational Resolution</h4>
+<p>Transforms extracted entities into a typed multi-layer graph using internal Wikipedia hyperlinks — not string matching — as ground truth for entity resolution.</p>
+<div class="stage-methods">
+<p>hyperlink resolution · graph construction · typed edges (kinship / succession / co-partisanship)</p>
+</div>
+<p><em>Moves from text to network structure.</em></p>
+</div>
+</div>
+<div style="text-align:center; font-size:0.85em; margin-top:1em; color:#60748e;">
+<p><strong>The core move:</strong> Stage 1 gives us entities. Stage 2 gives us <em>relations between entities</em>.</p>
+</div>
+</section>
 <section id="wikipedia-data-source" class="slide level2">
 <h2>Wikipedia: Data source</h2>
 
@@ -485,9 +522,9 @@ ARG · BOL · CHL · COL · ECU · MEX · PRY · PER · URY · VEN</p>
 <div class="hypotheses-overview-wrap">
 <table class="caption-top">
 <colgroup>
-<col style="width: 6%">
-<col style="width: 48%">
-<col style="width: 45%">
+<col style="width: 19%">
+<col style="width: 41%">
+<col style="width: 38%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -607,7 +644,6 @@ ARG · BOL · CHL · COL · ECU · MEX · PRY · PER · URY · VEN</p>
 </tbody>
 </table>
 </div><div class="column" style="width:44%;">
-<p><strong>Reading</strong></p>
 <ul>
 <li>Endogamy differs sharply across countries.</li>
 <li>Larger political fields tend to show lower closure.</li>
@@ -942,39 +978,29 @@ ARG · BOL · CHL · COL · ECU · MEX · PRY · PER · URY · VEN</p>
 <section id="broader-implications" class="slide level2">
 <h2>Broader Implications</h2>
 <div class="box-primary">
-<p><strong>Democracy:</strong> Where closure and institutional concentration coincide, accountability faces a structural obstacle.</p>
-</div>
-<div class="box-primary">
-<p><strong>Computational social science:</strong> Large-scale computational prosopography is feasible with public digital traces.</p>
+<p><strong>Computational prosopography at scale:</strong> public digital traces enable historical-sociological inference that was previously limited to manual archives.</p>
 </div>
 <div class="box-highlight">
-<p><strong>Public archives:</strong> Open genealogical data can increase both transparency and elite salience.</p>
+<p><strong>From text to relational structure:</strong> the methodological payoff is not entity extraction — it is transforming unstructured biographies into graphs amenable to statistical inference.</p>
+</div>
+<div class="box-primary">
+<p><strong>Democracy &amp; transparency:</strong> open genealogical data makes elite reproduction legible, turning a descriptive problem into a measurable one.</p>
 </div>
 </section>
 <section id="limitations" class="slide level2">
 <h2>Limitations</h2>
 <div class="box-primary">
-<p><strong>1) Visibility bias</strong>: Wikipedia disproportionately documents literate, urban, politically visible individuals. Indigenous, Afro-descendant, and subnational elites are underrepresented.</p>
+<p><strong>1) Coverage bias</strong> — Wikipedia over-represents urban, literate, politically visible actors. Indigenous, Afro-descendant, and subnational elites are systematically underrepresented.</p>
 </div>
 <div class="box-highlight">
-<p><strong>2) Kinship incompleteness</strong>: 42.2% of infobox-declared ties do not resolve to a second scraped biography. Per-country matching rates have not yet been diagnosed — priority work for next iteration.</p>
+<p><strong>2) Entity resolution</strong> — 42.2% of infobox ties fail to resolve to a second biography. Per-country matching rates are the next diagnostic priority.</p>
 </div>
 <div class="box-primary">
-<p><strong>3) Label uncertainty</strong>: <code>familia_norm</code> may merge distinct lineages (common surname) or split unified ones (orthographic variation across borders).</p>
+<p><strong>3) Label noise</strong> — <code>familia_norm</code> may over-merge common surnames or split lineages across orthographic borders.</p>
 </div>
 <div class="box-highlight">
-<p><strong>4) No causal identification</strong>: Network position measures covary with regime characteristics. They do not establish that kinship architecture causes political order — only that the two are structurally entangled in the documentary record.</p>
+<p><strong>4) Identification</strong> — network position and regime type are structurally entangled in the record; the design shows association, not causation.</p>
 </div>
-</section>
-<section id="key-takeaways-for-computational-text-research" class="slide level2">
-<h2>Key Takeaways for Computational Text Research</h2>
-<ul>
-<li><strong>Web scraping as data infrastructure</strong>: Public platforms like Wikipedia enable large-scale prosopography, but require careful handling of bias, coverage, and normalization.</li>
-<li><strong>String methods still matter</strong>: Regular expressions, rule-based parsing, and name disambiguation remain essential for extracting relational data from messy text.</li>
-<li><strong>From text to networks</strong>: The key contribution is not only extracting entities, but transforming text into relational structures (graphs) that allow new types of inference.</li>
-<li><strong>LLMs as next step</strong>: Large Language Models can improve extraction, resolve ambiguities, and identify implicit relationships (e.g., kinship not explicitly tagged), expanding recall beyond rule-based methods.</li>
-<li><strong>New research agenda</strong>: Combining web-scraped corpora, network analysis, and LLM-assisted annotation opens a path toward scalable, comparative historical sociology.</li>
-</ul>
 </section>
 <section id="package-future-implications" class="slide level2">
 <h2>Package + Future Implications</h2>

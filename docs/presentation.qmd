@@ -51,6 +51,12 @@ Spanish-language Wikipedia, we reconstruct kinship networks across
 multiple Latin American countries and analyze their structure using
 tools from network science.
 
+![](image/brazilia.jpg){fig-align="center" width="62%"}
+
+::: {style="text-align:center; font-size:0.75em; color:#60748e; margin-top:0.4em;"}
+Construction of Brasilia
+:::
+
 ## Motivation {.montage-step-1}
 
 ::: montage-frame
@@ -192,6 +198,53 @@ ARG · BOL · CHL · COL · ECU · MEX · PRY · PER · URY · VEN
 
 ------------------------------------------------------------------------
 
+## Methodology: Two-Stage NLP Pipeline
+
+::: {.pipeline-stages}
+::: {.stage-card}
+::: stage-badge
+Stage 1
+:::
+#### Rule-based Extraction
+Classical NLP over Spanish-language Wikipedia: rate-limited scraping,
+regex parsing of infobox fields, and Unicode normalization.
+
+::: stage-methods
+`rvest` · regex · infobox schema · `familia_norm`
+:::
+
+*Prioritizes precision over recall.*
+:::
+
+::: stage-arrow
+→
+:::
+
+::: {.stage-card .stage-card-highlight}
+::: stage-badge
+Stage 2
+:::
+#### Relational Resolution
+Transforms extracted entities into a typed multi-layer graph using
+internal Wikipedia hyperlinks — not string matching — as ground truth
+for entity resolution.
+
+::: stage-methods
+hyperlink resolution · graph construction · typed edges (kinship /
+succession / co-partisanship)
+:::
+
+*Moves from text to network structure.*
+:::
+:::
+
+::: {style="text-align:center; font-size:0.85em; margin-top:1em; color:#60748e;"}
+**The core move:** Stage 1 gives us entities. Stage 2 gives us
+*relations between entities*.
+:::
+
+------------------------------------------------------------------------
+
 ## Wikipedia: Data source
 
 ![](image/familias.jpg){fig-align="center" width="78%"}
@@ -204,7 +257,7 @@ ARG · BOL · CHL · COL · ECU · MEX · PRY · PER · URY · VEN
 
 ::: hypotheses-overview-wrap
 | **Hyp.** | Core claim                                                                    | Mechanism                                                                |
-|----------|-------------------------------------------------------------------------------|--------------------------------------------------------------------------|
+|--------------|------------------------------|----------------------------|
 | **H1**   | Elite persistence is **mediated by social closure** (endogamy).               | Marriage market as a **defensive buffer** against political turnover.    |
 | **H2**   | Elite survival depends on **multidimensional interconnectivity**.             | **Endogamy + transnational ties** jointly buffer shocks.                 |
 | **H3**   | Networks shift from **expansive alliances** to **self-referential clusters**. | Intensive kinship substitutes for **weak state institutions** over time. |
@@ -251,7 +304,6 @@ registration and the expansion of the professionalized political class.
 :::
 
 ::: {.column width="44%"}
-**Reading**
 
 -   Endogamy differs sharply across countries.
 -   Larger political fields tend to show lower closure.
@@ -507,72 +559,44 @@ Taken together, the results indicate that political shocks do not
 eliminate elites but rather reorganize their internal composition, with
 heterogeneous effects across national contexts.
 
-------------------------------------------------------------------------
+---
 
 ## Broader Implications
 
 ::: box-primary
-**Democracy:** Where closure and institutional concentration coincide,
-accountability faces a structural obstacle.
-:::
-
-::: box-primary
-**Computational social science:** Large-scale computational
-prosopography is feasible with public digital traces.
+**Computational prosopography at scale:** public digital traces enable historical-sociological inference that was previously limited to manual archives.
 :::
 
 ::: box-highlight
-**Public archives:** Open genealogical data can increase both
-transparency and elite salience.
+**From text to relational structure:** the methodological payoff is not entity extraction — it is transforming unstructured biographies into graphs amenable to statistical inference.
 :::
+
+::: box-primary
+**Democracy & transparency:** open genealogical data makes elite reproduction legible, turning a descriptive problem into a measurable one.
+:::
+
+---
 
 ## Limitations
 
 ::: box-primary
-**1) Visibility bias**: Wikipedia disproportionately documents literate,
-urban, politically visible individuals. Indigenous, Afro-descendant, and
-subnational elites are underrepresented.
+**1) Coverage bias** — Wikipedia over-represents urban, literate, politically visible actors. Indigenous, Afro-descendant, and subnational elites are systematically underrepresented.
 :::
 
 ::: box-highlight
-**2) Kinship incompleteness**: 42.2% of infobox-declared ties do not
-resolve to a second scraped biography. Per-country matching rates have
-not yet been diagnosed — priority work for next iteration.
+**2) Entity resolution** — 42.2% of infobox ties fail to resolve to a second biography. Per-country matching rates are the next diagnostic priority.
 :::
 
 ::: box-primary
-**3) Label uncertainty**: `familia_norm` may merge distinct lineages
-(common surname) or split unified ones (orthographic variation across
-borders).
+**3) Label noise** — `familia_norm` may over-merge common surnames or split lineages across orthographic borders.
 :::
 
 ::: box-highlight
-**4) No causal identification**: Network position measures covary with
-regime characteristics. They do not establish that kinship architecture
-causes political order — only that the two are structurally entangled in
-the documentary record.
+**4) Identification** — network position and regime type are structurally entangled in the record; the design shows association, not causation.
 :::
 
-------------------------------------------------------------------------
+---
 
-## Key Takeaways for Computational Text Research
-
--   **Web scraping as data infrastructure**: Public platforms like
-    Wikipedia enable large-scale prosopography, but require careful
-    handling of bias, coverage, and normalization.
--   **String methods still matter**: Regular expressions, rule-based
-    parsing, and name disambiguation remain essential for extracting
-    relational data from messy text.
--   **From text to networks**: The key contribution is not only
-    extracting entities, but transforming text into relational
-    structures (graphs) that allow new types of inference.
--   **LLMs as next step**: Large Language Models can improve extraction,
-    resolve ambiguities, and identify implicit relationships (e.g.,
-    kinship not explicitly tagged), expanding recall beyond rule-based
-    methods.
--   **New research agenda**: Combining web-scraped corpora, network
-    analysis, and LLM-assisted annotation opens a path toward scalable,
-    comparative historical sociology.
 
 ## Package + Future Implications
 
@@ -615,4 +639,7 @@ Upcoming, London School of Economics
 [m.deneken\@uc.cl](mailto:m.deneken@uc.cl){.email-link}
 
 [GitHub: \@matdknu](https://github.com/matdknu){.github-link}
+
+
+
 :::

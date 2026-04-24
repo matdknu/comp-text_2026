@@ -472,6 +472,70 @@ body {
   margin-top: 0;
 }
 
+/* Two-stage methodology cards */
+.reveal .pipeline-stages {
+  display: flex;
+  align-items: stretch;
+  gap: 1em;
+  margin: 1.2em 0;
+}
+
+.reveal .stage-card {
+  flex: 1;
+  background: #f7f9fc;
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid #3b5b8a;
+  border-radius: 8px;
+  padding: 1.2em 1.4em;
+  position: relative;
+}
+
+.reveal .stage-card-highlight {
+  border-left-color: #b8651a;
+  background: #fef9f3;
+}
+
+.reveal .stage-badge {
+  display: inline-block;
+  background: #3b5b8a;
+  color: #ffffff;
+  font-size: 0.7em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 0.25em 0.7em;
+  border-radius: 999px;
+  margin-bottom: 0.6em;
+  text-transform: uppercase;
+}
+
+.reveal .stage-card-highlight .stage-badge {
+  background: #b8651a;
+}
+
+.reveal .stage-card h4 {
+  margin: 0.2em 0 0.5em 0;
+  font-size: 1.1em;
+  color: #1a2b4a;
+}
+
+.reveal .stage-methods {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.75em;
+  color: #60748e;
+  margin: 0.7em 0;
+  padding: 0.4em 0.6em;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 4px;
+}
+
+.reveal .stage-arrow {
+  display: flex;
+  align-items: center;
+  font-size: 2em;
+  color: #60748e;
+  font-weight: 300;
+}
+
 /* Footer y navegación */
 .reveal .slide-number {
   color: #315d93 !important;
