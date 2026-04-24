@@ -8,7 +8,7 @@ format:
     output-file: index.html
     theme: [simple, custom.scss]
     fontsize: 28px
-    slide-number: true
+    slide-number: c
     transition: fade
     background-transition: fade
     controls: true
@@ -25,15 +25,6 @@ editor:
 ## 
 
 ## 
-
-## Me
-
-![](image/yo.jpg){fig-align="center" width="34%"}
-
-**Matías Deneken**\
-
-GitHub: [\@matdknu](https://github.com/matdknu)\
-Email: [m.deneken\@uc.cl](mailto:m.deneken@uc.cl)
 
 ------------------------------------------------------------------------
 
@@ -484,6 +475,10 @@ quasi-exogenous breaks to identify how regime change reshapes
 intra-elite dynamics.
 
 ![](images/mexican-revolution.jpg){fig-align="center" width="414"}
+
+::: {style="text-align:center; font-size:0.62em; color:#60748e; margin-top:0.25em;"}
+Mexican Revolution, 1910
+:::
 
 ## Causal Results: DiD and Event Study
 
