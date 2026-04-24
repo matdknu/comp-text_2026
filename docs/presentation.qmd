@@ -543,16 +543,23 @@ knitr::kable(het_tbl, digits = 3)
 
 ## Figure 2 — Probabilities
 
-![](images/figure_2_probabilities.png){.r-stretch fig-align="center"}
+:::: columns
+::: {.column width="50%"}
+![](images/shocks.png){fig-align="center" width="100%"}
+:::
+::: {.column width="50%"}
+![](images/figure_2_probabilities.png){fig-align="center" width="100%"}
+:::
+::::
+
+::: {style="font-size:0.55em; color:#60748e; text-align:center; margin-top:0.35em;"}
+Left: shock timeline. Right: post-shock probability shifts.
+:::
 
 Figure 2 complements these findings by showing changes in the
 probability of elite persistence. Across countries, state-dependent
 elites exhibit a systematic decline after shocks, while market-oriented
 actors maintain or increase their relative position.
-
-Taken together, the results indicate that political shocks do not
-eliminate elites but rather reorganize their internal composition, with
-heterogeneous effects across national contexts.
 
 ---
 
